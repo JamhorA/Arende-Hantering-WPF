@@ -1,0 +1,132 @@
+﻿<Page x:Class="Arende_hantering_wpf.Pages.GetCase"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="1000"
+      Title="GetCase">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Left" Width="660" Padding="5,5,0,5" Margin="5,10,0,10">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Case ID" Margin="5,5,0,5" Width="230"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Subject" Width="40" Margin="15,5, 0, 5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Status" Width="40" Margin="60,5,0,5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Modified At" Width="60" Margin="60,5,0,5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="View/Edit" Width="60" Margin="80,5,0,5"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <UniformGrid Rows="1" Name="pageGrid" Margin="0,0,0,10" Grid.Row="1">
+            <StackPanel Name="pageStackPanel">
+                <ItemsControl x:Name="casesList" Height="Auto" Width="Auto">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" BorderBrush="Gray" Margin="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal" Width="230" Margin="5,5, 0, 5">
+                                        <TextBlock Text="{Binding Id}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Width="80" Margin="15,5, 0, 5">
+                                        <TextBlock Text="{Binding Title}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Width="60" Margin="20,5, 0, 5">
+                                        <TextBlock Text="{Binding StatusType.StatusName}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Width="125" Margin="40,5,0,5">
+                                        <TextBlock Text="{Binding Modified}"/>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Button Content="View/Edit" Click="Button_Click" Tag="{Binding Id}" Margin="20,5,5,5"/>
+
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="340" Margin="5,5,0,5">
+                    <TextBlock FontWeight="Bold" FontSize="14" Foreground="#4e4ee1" x:Name="UCase" Text="{Binding Title}"/>
+                    <TextBlock FontWeight="Bold" FontSize="14" Foreground="#4e4ee1" x:Name="Id" Margin="20,0,0,0" Text="{Binding Title}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5,5,0,5">
+                    <StackPanel Width="100" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <TextBlock x:Name="TypeName" Text="{Binding Title}"/>
+                    </StackPanel>
+                    <TextBlock x:Name="UCreated" Margin="160,0, 0, 0"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5,0, 0, 0">
+                    <StackPanel Width="200" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <TextBlock x:Name="FirstName" Text="{Binding FirstName}"/>
+                        <TextBlock x:Name="LastName" Width="80" Text="{Binding Title}" Margin="5,0, 0, 0"/>
+                    </StackPanel>
+                    <TextBlock x:Name="Created" Text="{Binding Title}" Margin="60,0, 0, 0"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5,25,0,5">
+                    <StackPanel Width="100" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <TextBlock x:Name="contactInfo"/>
+                    </StackPanel>
+                    <TextBlock x:Name="UModified" Margin="160,0, 0, 0"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5,0, 0, 0">
+                    <TextBlock x:Name="Email" Width="230" />
+                    <TextBlock x:Name="Modified" Margin="30,0, 0, 0" Text="{Binding Title}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="125" Margin="5,0,0,5">
+                    <TextBlock x:Name="PohoneNumber" Text="{Binding Title}"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5,25,0,5">
+                    <TextBlock Width="100" x:Name="USubject"/>
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5,0,0,5">
+                        <TextBlock x:Name="UDescription" Margin="40,0, 0, 0"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal"  Margin="5,5, 0, 5">
+                    <TextBlock Width="100" x:Name="title" Text="{Binding FirstName}"/>
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal"  Margin="5,0, 0, 5">
+                        <TextBlock x:Name="Description" Text="{Binding Title}" Margin="40,0, 0, 0"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Visibility="Collapsed" x:Name="EditPanel">
+                    <Button Margin="15,0, 0, 0" Content="Add Comment" Click="Add_Comment_Btn" />
+                    <Button Margin="15,0, 0, 0" Content="Remove Case" Click="Remove_Case_Btn" />
+                    <Button Margin="15,0, 0, 0" Content="Change Status" Click="Change_Status_Btn" />
+                    
+                </StackPanel>
+                <StackPanel Visibility="Collapsed" x:Name="Add_Comment_Panel">
+                    <TextBox x:Name="Comment"/>
+                    <Button Content="Save" Click="Save_Comment_Btn"/>
+                </StackPanel>
+                <StackPanel Margin="0, 10, 0, 0" Visibility="Collapsed" x:Name="ChangeStatus">
+                    <TextBlock FontSize="12" FontWeight="Bold" Text="Use only number 1: Ej Påbörjad, 2: Pågående or 3: Avslutade"/>
+                    <TextBox x:Name="Status"/>
+                    <Button Content="Save" Click="Save_Status_Change_Btn"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </UniformGrid>
+    </Grid>
+
+</Page>
